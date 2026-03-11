@@ -41,7 +41,7 @@ idun-slowrun/
 ## 1. Clone the repo
 
 ```bash
-git clone https://github.com//idun-slowrun.git
+git clone https://github.com/masaet/idun-slowrun.git
 cd idun-slowrun
 ```
 
