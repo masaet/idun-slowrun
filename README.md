@@ -54,11 +54,6 @@ git submodule add https://github.com/qlabs-eng/slowrun.git slowrun
 git submodule update --init
 ```
 
-If you cloned this repo and slowrun/ is empty, run:
-```bash
-git submodule update --init
-```
-
 ---
 
 ## 3. Set your SLURM account
@@ -68,13 +63,13 @@ Find your account name:
 sacctmgr show user $USER withassoc format=user,account,partition
 ```
 
-Add it to your `~/.bashrc` so you never have to think about it again:
+Add it to your `~/.bashrc` (to avoid having to set the variable for every login):
 ```bash
 echo "export SLURM_ACCOUNT=ie-itk" >> ~/.bashrc
 source ~/.bashrc
 ```
 
-Replace `ie-itk` with your actual account name.
+Replace `ie-itk` with your actual account name. (note, account name is not your username, but the name associated with your institute)
 
 ---
 
