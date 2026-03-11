@@ -1,0 +1,3 @@
+[submodule "slowrun"]
+	path = slowrun
+	url = https://github.com/qlabs-eng/slowrun.git
