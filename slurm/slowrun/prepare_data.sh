@@ -1,7 +1,3 @@
-
-Prepare data · SH
-Copy
-
 #!/usr/bin/env bash
 # =============================================================================
 # slurm/slowrun/prepare_data.sh — Download and tokenise FineWeb 100M tokens
@@ -21,6 +17,7 @@ Copy
 #SBATCH --time=02:00:00
 #SBATCH --output=logs/slowrun/prepare_data_%j.out
 #SBATCH --error=logs/slowrun/prepare_data_%j.err
+
 
 set -euo pipefail
 
