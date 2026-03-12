@@ -55,33 +55,38 @@ mkdir -p logs/slowrun
 # GPU type — default to h100, override with GPU_TYPE=p100 etc.
 # ---------------------------------------------------------------------------
 GPU_TYPE="${GPU_TYPE:-h100}"
-NUM_GPUS="${NUM_GPUS:-8}"
 
 case "$GPU_TYPE" in
     h100|h200)
         CPUS_PER_GPU=8
         MEM_PER_GPU=32
+        DEFAULT_GPUS=8
         ;;
     a100)
         CPUS_PER_GPU=8
         MEM_PER_GPU=32
+        DEFAULT_GPUS=4
         ;;
     v100)
         CPUS_PER_GPU=6
         MEM_PER_GPU=24
+        DEFAULT_GPUS=2
         ;;
     p100)
         CPUS_PER_GPU=4
         MEM_PER_GPU=16
+        DEFAULT_GPUS=2
         ;;
     *)
         CPUS_PER_GPU=4
         MEM_PER_GPU=16
+        DEFAULT_GPUS=1
         ;;
 esac
 
 TOTAL_CPUS=$(( CPUS_PER_GPU * NUM_GPUS ))
 TOTAL_MEM=$(( MEM_PER_GPU * NUM_GPUS ))G
+NUM_GPUS="${NUM_GPUS:-$DEFAULT_GPUS}"
 
 
 
