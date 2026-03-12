@@ -37,8 +37,9 @@ idun-slowrun/
 
 ---
 
+## Setup
 
-## 1. Clone the repo
+### 1. Clone the repo
 
 ```bash
 git clone https://github.com/masaet/idun-slowrun.git
@@ -47,7 +48,7 @@ cd idun-slowrun
 
 ---
 
-## 2. Add the slowrun submodule
+### 2. Add the slowrun submodule
 
 ```bash
 git submodule add https://github.com/qlabs-eng/slowrun.git slowrun
@@ -56,7 +57,7 @@ git submodule update --init
 
 ---
 
-## 3. Set your SLURM account
+### 3. Set your SLURM account
 
 Find your account name:
 ```bash
@@ -73,7 +74,7 @@ Replace `ie-itk` with your actual account name. (note, account name is not your 
 
 ---
 
-## 4. Set up the conda environment
+### 4. Set up the conda environment
 
 Run this once from the repo root:
 ```bash
@@ -90,7 +91,7 @@ This will:
 
 ---
 
-## 5. Log in to Weights & Biases
+### 5. Log in to Weights & Biases
 
 Slowrun uses wandb for experiment tracking. Run this once on Idun:
 ```bash
@@ -102,7 +103,7 @@ You will be prompted for your API key, which you can find at [wandb.ai/authorize
 
 ---
 
-## 6. Prepare the data
+### 6. Prepare the data
 
 This only needs to be run **once**. It downloads and tokenises 100M tokens from FineWeb and writes two files to `~/data/slowrun/fineweb_data/`:
 - `fineweb_train.pt` — 100M training tokens
@@ -116,12 +117,12 @@ bash submit.sh prepare_data
 Monitor progress:
 ```bash
 squeue -u $USER
-tail -f logs/slowrun/prepare_data_.out
+tail -f logs/slowrun/prepare_data_"jobnumber".out
 ```
 
 ---
 
-## 7. Run training
+##  Run training
 
 ### Tiny track (≤15 minutes — good for testing changes)
 
@@ -142,7 +143,7 @@ tail -f logs/slowrun/train_tiny_.out
 
 ---
 
-## 8. Useful cluster commands
+##  Useful cluster commands
 
 ```bash
 # Check GPU availability
@@ -163,7 +164,7 @@ scancel
 
 ---
 
-## 9. Troubleshooting
+##  Troubleshooting
 
 **`SLURM_ACCOUNT` not set**
 ```
