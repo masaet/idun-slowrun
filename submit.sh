@@ -51,9 +51,16 @@ mkdir -p logs/slowrun
 # ---------------------------------------------------------------------------
 # Submit
 # ---------------------------------------------------------------------------
+# ---------------------------------------------------------------------------
+# GPU type — default to h100, override with GPU_TYPE=p100 etc.
+# ---------------------------------------------------------------------------
+GPU_TYPE="${GPU_TYPE:-h100}"
+NUM_GPUS="${NUM_GPUS:-8}"
+
+
 echo "==> Submitting $SCRIPT with account=$SLURM_ACCOUNT"
 
 sbatch \
     --account="$SLURM_ACCOUNT" \
-    ${NUM_GPUS:+--gres=gpu:h100:$NUM_GPUS} \
+    ${NUM_GPUS:+--gres=gpu:$GPU_TYPE:$NUM_GPUS} \
     "$SCRIPT"
