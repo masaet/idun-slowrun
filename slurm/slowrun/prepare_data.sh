@@ -33,7 +33,7 @@ conda activate "$ENV_PATH"
 # ---------------------------------------------------------------------------
 # Paths
 # ---------------------------------------------------------------------------
-REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
+REPO_DIR="$HOME/idun-slowrun"
 DATA_DIR="$HOME/data/slowrun/fineweb_data"
 cd "$REPO_DIR/slowrun"
 
