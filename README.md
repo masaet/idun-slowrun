@@ -127,13 +127,10 @@ tail -f logs/slowrun/prepare_data_"jobnumber".out
 ### Tiny track (≤15 minutes — good for testing changes)
 
 ```bash
-bash submit.sh train_tiny
+GPU_TYPE=p100 bash submit.sh train_tiny
 ```
 
-Override GPU count (default is 8):
-```bash
-NUM_GPUS=4 GPU_TYPE=p100 bash submit.sh train_tiny
-```
+available gpu types: p100, v100, a100, h100
 
 Monitor progress:
 ```bash
