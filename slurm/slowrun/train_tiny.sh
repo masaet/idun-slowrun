@@ -15,9 +15,8 @@
 #SBATCH --partition=GPUQ
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
-#SBATCH --gres=gpu:h100:8
-#SBATCH --cpus-per-task=64
-#SBATCH --mem=256G
+#SBATCH --cpus-per-task=8
+#SBATCH --mem=32G
 #SBATCH --time=00:15:00
 #SBATCH --output=logs/slowrun/train_tiny_%j.out
 #SBATCH --error=logs/slowrun/train_tiny_%j.err
@@ -51,7 +50,7 @@ export NCCL_DEBUG=WARN
 # ---------------------------------------------------------------------------
 # Run
 # ---------------------------------------------------------------------------
-echo "==> Starting tiny track training with $NUM_GPUS GPUs at $(date)"
+echo "==> Starting tiny track training with $NUM_GPUS $GPU_TYPE at $(date)"
 echo "==> Node: $(hostname)"
 nvidia-smi --query-gpu=name,memory.total --format=csv,noheader
 
