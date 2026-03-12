@@ -27,7 +27,7 @@ set -euo pipefail
 # ---------------------------------------------------------------------------
 # Environment
 # ---------------------------------------------------------------------------
-NUM_GPUS="${NUM_GPUS:-8}"
+
 ENV_PATH="${ENV_PATH:-$HOME/conda_envs/slowrun_env}"
 
 module load Miniconda3/24.7.1-0
