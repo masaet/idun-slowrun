@@ -1,7 +1,3 @@
-
-Train tiny · SH
-Copy
-
 #!/usr/bin/env bash
 # =============================================================================
 # slurm/slowrun/train_tiny.sh — Tiny track (≤15 minutes, single 8xH100 node)
@@ -41,7 +37,9 @@ conda activate "$ENV_PATH"
 # ---------------------------------------------------------------------------
 # Paths
 # ---------------------------------------------------------------------------
-REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
+REPO_DIR="$HOME/idun-slowrun"
+DATA_DIR="$HOME/data/slowrun/fineweb_data"
+
 cd "$REPO_DIR/slowrun/tiny"
 
 # ---------------------------------------------------------------------------
@@ -61,7 +59,7 @@ torchrun \
     --standalone \
     --nproc_per_node="$NUM_GPUS" \
     train.py \
-    --input_bin $HOME/data/slowrun/fineweb_data/fineweb_train.pt \
-    --input_val_bin $HOME/data/slowrun/fineweb_data/fineweb_val.pt
+    --input_bin "$DATA_DIR/fineweb_train.pt" \
+    --input_val_bin "$DATA_DIR/fineweb_val.pt"
 
 echo "==> Done at $(date)"
