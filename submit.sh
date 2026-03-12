@@ -57,10 +57,39 @@ mkdir -p logs/slowrun
 GPU_TYPE="${GPU_TYPE:-h100}"
 NUM_GPUS="${NUM_GPUS:-8}"
 
+case "$GPU_TYPE" in
+    h100|h200)
+        CPUS_PER_GPU=8
+        MEM_PER_GPU=32
+        ;;
+    a100)
+        CPUS_PER_GPU=8
+        MEM_PER_GPU=32
+        ;;
+    v100)
+        CPUS_PER_GPU=6
+        MEM_PER_GPU=24
+        ;;
+    p100)
+        CPUS_PER_GPU=4
+        MEM_PER_GPU=16
+        ;;
+    *)
+        CPUS_PER_GPU=4
+        MEM_PER_GPU=16
+        ;;
+esac
+
+TOTAL_CPUS=$(( CPUS_PER_GPU * NUM_GPUS ))
+TOTAL_MEM=$(( MEM_PER_GPU * NUM_GPUS ))G
+
+
 
 echo "==> Submitting $SCRIPT with account=$SLURM_ACCOUNT"
 
 sbatch \
     --account="$SLURM_ACCOUNT" \
-    ${NUM_GPUS:+--gres=gpu:$GPU_TYPE:$NUM_GPUS} \
+    --gres=gpu:${GPU_TYPE}:${NUM_GPUS} \
+    --cpus-per-task=${TOTAL_CPUS} \
+    --mem=${TOTAL_MEM} \
     "$SCRIPT"
