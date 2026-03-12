@@ -55,6 +55,7 @@ mkdir -p logs/slowrun
 # GPU type — default to h100, override with GPU_TYPE=p100 etc.
 # ---------------------------------------------------------------------------
 GPU_TYPE="${GPU_TYPE:-h100}"
+NUM_GPUS="${NUM_GPUS:-}"       #Set to empty to prevent unbound variable error
 
 case "$GPU_TYPE" in
     h100|h200)
