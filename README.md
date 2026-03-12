@@ -132,7 +132,7 @@ bash submit.sh train_tiny
 
 Override GPU count (default is 8):
 ```bash
-NUM_GPUS=4 bash submit.sh train_tiny
+NUM_GPUS=4 GPU_TYPE=p100 bash submit.sh train_tiny
 ```
 
 Monitor progress:
