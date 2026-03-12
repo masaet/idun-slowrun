@@ -88,7 +88,7 @@ TOTAL_CPUS=$(( CPUS_PER_GPU * NUM_GPUS ))
 TOTAL_MEM=$(( MEM_PER_GPU * NUM_GPUS ))G
 NUM_GPUS="${NUM_GPUS:-$DEFAULT_GPUS}"
 
-
+TIME="${TIME:-00:15:00}"
 
 echo "==> Submitting $SCRIPT with account=$SLURM_ACCOUNT"
 
@@ -97,4 +97,5 @@ sbatch \
     --gres=gpu:${GPU_TYPE}:${NUM_GPUS} \
     --cpus-per-task=${TOTAL_CPUS} \
     --mem=${TOTAL_MEM} \
+    --time=${TIME} \
     "$SCRIPT"
