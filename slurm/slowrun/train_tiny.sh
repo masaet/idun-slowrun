@@ -57,6 +57,7 @@ torchrun \
     --nproc_per_node="$NUM_GPUS" \
     train.py \
     --input_bin "$DATA_DIR/fineweb_train.pt" \
-    --input_val_bin "$DATA_DIR/fineweb_val.pt"
+    --input_val_bin "$DATA_DIR/fineweb_val.pt" \
+    --device-batch-size 8
 
 echo "==> Done at $(date)"
